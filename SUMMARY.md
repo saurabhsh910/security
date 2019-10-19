@@ -1,4 +1,6 @@
 # Table of contents
 
-* [Initial page](README.md)
+* [Basics](README.md)
+* [Basics of linux](untitled/README.md)
+  * [Untitled](untitled/untitled.md)
 

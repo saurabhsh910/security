@@ -1,6 +1,9 @@
 # Table of contents
 
 * [Basics](README.md)
+* [Scripting With Python](scripting-with-python/README.md)
+  * [Useful Scripts](scripting-with-python/useful-scripts.md)
+  * [Python Fundamentals](scripting-with-python/python-fundamentals.md)
 * [Windows](windows/README.md)
   * [CMD](windows/cmd.md)
   * [PowerShell Scripting](windows/powershell-scripting.md)

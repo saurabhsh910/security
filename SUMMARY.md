@@ -2,6 +2,7 @@
 
 * [Basics](README.md)
 * [Transferring Files](transferring-files/README.md)
+  * [Transfering files on Windows](transferring-files/transfering-files-on-windows.md)
   * [Transfering Files on Linux](transferring-files/transfering-files-on-linux.md)
 * [Scripting With Python](scripting-with-python/README.md)
   * [Useful Scripts](scripting-with-python/useful-scripts.md)

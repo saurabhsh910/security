@@ -1,7 +1,7 @@
 # Table of contents
 
 * [Basics](README.md)
-* [General tips and tricks · Total OSCP Guide](untitled-1.md)
+* [General tips and tricks](untitled-1.md)
 * [Transferring Files](transferring-files/README.md)
   * [Transfering files on Windows](transferring-files/transfering-files-on-windows.md)
   * [Transfering Files on Linux](transferring-files/transfering-files-on-linux.md)

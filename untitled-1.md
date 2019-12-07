@@ -1,4 +1,4 @@
-# General tips and tricks · Total OSCP Guide
+# General tips and tricks
 
 ## Disposable email <a id="disposable-email"></a>
 

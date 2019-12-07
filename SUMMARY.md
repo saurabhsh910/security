@@ -1,7 +1,8 @@
 # Table of contents
 
 * [Basics](README.md)
-* [Transferring Files](transferring-files.md)
+* [Transferring Files](transferring-files/README.md)
+  * [Transfering Files on Linux](transferring-files/transfering-files-on-linux.md)
 * [Scripting With Python](scripting-with-python/README.md)
   * [Useful Scripts](scripting-with-python/useful-scripts.md)
   * [Python Fundamentals](scripting-with-python/python-fundamentals.md)

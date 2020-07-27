@@ -25,4 +25,5 @@
   * [VNC pivoting using Meterpreter](tunneling/vnc-pivoting-using-meterpreter.md)
   * [VNC tunneling over SSH](tunneling/vnc-tunneling-over-ssh.md)
   * [FTP Pivoting through RDP](tunneling/ftp-pivoting-through-rdp.md)
+  * [RDP Pivoting with Metasploit](tunneling/rdp-pivoting-with-metasploit.md)
 

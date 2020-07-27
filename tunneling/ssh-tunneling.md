@@ -192,3 +192,53 @@ Now open a new terminal and type below command for connecting to SSH client.ssh 
 
 ## **Remote port forwarding**
 
+**Step for remote tunneling**
+
+* Enter remote system IP **192**.**168.1.108**
+* Mention port 22
+* Go to SSH&gt;tunnel options
+
+![](https://i2.wp.com/3.bp.blogspot.com/-M4URZaskwVs/WqtlkVnuTeI/AAAAAAAAVSs/vEJ8bD4Yvjg6ZPWXcgq7bNAXY3qxkToRACEwYBhgL/s1600/25.png?w=687&ssl=1)
+
+* Give new **port forwarded** as **7000** and connection type as **Remote**
+* Destination address **as 198.168.10.2:22**for establishing a connection with the specific client and click on ADD at last.
+* Click on **open** when all things get set.
+
+![](https://i0.wp.com/1.bp.blogspot.com/-LUQq2zs4iC8/WqtlkzWAszI/AAAAAAAAVSs/khuZzpfXpc8kLBGlEbrQGiUy6NIp88WNACEwYBhgL/s1600/26.png?w=687&ssl=1)
+
+Now the server will get connected to Remote system as shown in below image.
+
+![](https://i0.wp.com/1.bp.blogspot.com/-_VxUi3R8qSA/WqtllbHXbrI/AAAAAAAAVSk/x84bTafGXp8eMAwd8A0DYOaNxgaXu2cUACEwYBhgL/s1600/27.png?w=687&ssl=1)
+
+Come back to the remote system and enter the following command to with SSH client machine.ssh raj@127.0.0.1 -p 7000
+
+| 1 | ssh raj@127.0.0.1 -p 7000 |
+| :--- | :--- |
+
+
+From given below image you can observe that we had successfully connected with SSH client machine via port 7000.
+
+![](https://i2.wp.com/1.bp.blogspot.com/-OHj-m-ojFd4/Wqtll2STY3I/AAAAAAAAVSw/Zy5OXdm4TwYGfUFo-lSSHOxSejSwC7x6gCEwYBhgL/s1600/28.png?w=687&ssl=1)
+
+#### **Remote SSH Tunneling through Ubuntu**
+
+If you are not willing to use putty for remote tunneling then you can execute the following commandssh -R 7000:192.168.10.2:22 root@192.168.1.108
+
+| 1 | ssh -R 7000:192.168.10.2:22 root@192.168.1.108 |
+| :--- | :--- |
+
+
+Here 192.168.1.10.2 is our local client \(raj\) IP and 192.168.1.108 is our remote system IP.
+
+![](https://i2.wp.com/2.bp.blogspot.com/-TMn0zCxxG4w/WqtlmbPsWNI/AAAAAAAAVSo/cUg4_9YSRHc59OqCs0sdVRJMv3cxdHcgwCEwYBhgL/s1600/29.png?w=687&ssl=1)
+
+Come back to the remote system and enter the following command to with SSH client machine.ssh raj@127.0.0.1 -p 7000
+
+| 1 | ssh raj@127.0.0.1 -p 7000 |
+| :--- | :--- |
+
+
+From given below image you can observe that we had successfully connected with SSH client machine via port 7000.
+
+![](https://i0.wp.com/1.bp.blogspot.com/-jnp4XG21PEc/Wqtlnfm9yFI/AAAAAAAAVSw/NCTnhwfdZ5AjwE07Obs3P2d2km7vHYL5wCEwYBhgL/s1600/30.png?w=687&ssl=1)
+

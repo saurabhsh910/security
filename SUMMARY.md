@@ -18,4 +18,6 @@
   * [Vim](untitled/untitled.md)
 * [Privilege escalation](privilege-escalation/README.md)
   * [Windows Privilege escalation](privilege-escalation/windows-privilege-escalation.md)
+* [Tunneling](tunneling/README.md)
+  * [SSH tunneling](tunneling/ssh-tunneling.md)
 

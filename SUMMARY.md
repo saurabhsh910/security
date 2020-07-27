@@ -20,4 +20,5 @@
   * [Windows Privilege escalation](privilege-escalation/windows-privilege-escalation.md)
 * [Tunneling](tunneling/README.md)
   * [SSH tunneling](tunneling/ssh-tunneling.md)
+  * [Telnet Pivoting through Meterpreter](tunneling/telnet-pivoting-through-meterpreter.md)
 

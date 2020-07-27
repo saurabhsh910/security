@@ -143,5 +143,52 @@ Enter the password and enjoy the access of SSH client.
 
 ## **Local port forwarding**
 
-\*\*\*\*
+**Step for SSH Local tunneling**
+
+* Use putty to connect **SSH server** \(**192**.**168.1.104**\) via **port 22** and choose option **SSH &gt;Tunnel** given in the left column of the category.
+
+![](https://i2.wp.com/4.bp.blogspot.com/-i8I0Ds8iCKk/WqtlhWb7KII/AAAAAAAAVSw/uXVB0BzP78kOMh_B5g2bCiEUDJtgLsjtwCEwYBhgL/s1600/18.png?w=687&ssl=1)
+
+* Give new **port forwarded** as **7000** and connection type as **local** 
+* Destination address **as 198.168.10.2:22** for establishing a connection with the specific client and click on ADD at last.
+* Click on **open** when all things get set.
+
+![](https://i2.wp.com/2.bp.blogspot.com/-uatTL4jfgGc/Wqtlhwi78CI/AAAAAAAAVSs/wi4cit9FcgIo5MPd7REJ2Ut6MDLAMM8QwCEwYBhgL/s1600/19.png?w=687&ssl=1)
+
+First, this will establish a connection between the remote pc and SSH server.
+
+![](https://i0.wp.com/2.bp.blogspot.com/-9TIwzLhX7nQ/WqtliXth0nI/AAAAAAAAVSk/zazt3n4TS-0Tw0j_Cd6VMbofPyKcRGpIACEwYBhgL/s1600/20.png?w=687&ssl=1)
+
+Open a new window of putty and follow given below step:
+
+* Give hostname as **localhost** and port **7000** and connection type **SSH**.
+* Click on **open** to establish a connection.
+
+![](https://i1.wp.com/4.bp.blogspot.com/-_sQu2NDdv5U/WqtliTMJA8I/AAAAAAAAVSw/WchGs55Q38k-6d9FHqEei8R6eNfc1VtrwCEwYBhgL/s1600/21.png?w=687&ssl=1)
+
+**Awesome!!** We have successfully access SSH client via port 7000 
+
+![](https://i0.wp.com/3.bp.blogspot.com/-piTTwDnkStQ/Wqtli2gI6oI/AAAAAAAAVSs/gzYAitiSaHEolhtku8UTceFPcpNOGDrGQCEwYBhgL/s1600/22.png?w=687&ssl=1)
+
+#### **Local SSH Tunneling through Kali Linux**
+
+Now again we switch into Kali Linux for local tunneling which is quite easy as compared to dynamic. Execute given below command for forwarding port to the local machine.ssh -L 7000:192.168.10.2:22 ignite@192.168.1.104
+
+| 1 | ssh -L 7000:192.168.10.2:22 ignite@192.168.1.104 |
+| :--- | :--- |
+
+
+![](https://i0.wp.com/3.bp.blogspot.com/-R-1BryHJjJA/WqtljcVJtsI/AAAAAAAAVSk/F2oayKG4rR00swNlYsGz24gs_vIEgkDgACEwYBhgL/s1600/23.png?w=687&ssl=1)
+
+Now open a new terminal and type below command for connecting to SSH client.ssh raj@127.0.0.1 -p 7000
+
+| 1 | ssh raj@127.0.0.1 -p 7000 |
+| :--- | :--- |
+
+
+**Awesome!!** We have successfully access SSH client via port 7000 
+
+![](https://i2.wp.com/1.bp.blogspot.com/-q1vVSVUUoxc/WqtljyETo3I/AAAAAAAAVSw/_5Z9foFjUhYynb3Lq3-nBspPWdqNOvaBgCEwYBhgL/s1600/24.png?w=687&ssl=1)
+
+## **Remote port forwarding**
 

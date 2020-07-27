@@ -22,4 +22,5 @@
   * [SSH tunneling](tunneling/ssh-tunneling.md)
   * [Telnet Pivoting through Meterpreter](tunneling/telnet-pivoting-through-meterpreter.md)
   * [SSH pivoting using Meterpreter](tunneling/ssh-pivoting-using-meterpreter.md)
+  * [VNC pivoting using Meterpreter](tunneling/vnc-pivoting-using-meterpreter.md)
 

@@ -26,4 +26,6 @@
   * [VNC tunneling over SSH](tunneling/vnc-tunneling-over-ssh.md)
   * [FTP Pivoting through RDP](tunneling/ftp-pivoting-through-rdp.md)
   * [RDP Pivoting with Metasploit](tunneling/rdp-pivoting-with-metasploit.md)
+* [Bug Bounty Writeups](bug-bounty-writeups/README.md)
+  * [June 2021](bug-bounty-writeups/june-2021.md)
 
